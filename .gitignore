@@ -1,0 +1,19 @@
+# Secrets and local config
+.claude/settings.local.json
+.mcp.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Environment / credentials
+.env
+.env.*
+*.pem
+*.key
+credentials.json
