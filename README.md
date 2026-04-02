@@ -73,3 +73,44 @@ Add new entries to your `.mcp.json`. See [Claude Code MCP docs](https://docs.ant
 
 ### Model selection
 The default model is `eu.anthropic.claude-opus-4-6-v1` (AWS Bedrock, EU region). Change this in `.claude/settings.local.json` and `.vscode/settings.json`.
+
+## Syncing with upstream
+
+When new MCP servers, skills, or plugins are added to this shared repo, pull them into your fork:
+
+### First time: add the upstream remote
+
+```bash
+git remote add upstream git@github.com:jupi-co/shared.git
+```
+
+### Each time: pull upstream changes
+
+```bash
+# Fetch the latest from shared
+git fetch upstream
+
+# Rebase your work on top of the latest shared base
+git rebase upstream/main
+```
+
+If you get conflicts (typically in files you've customized like `company-brand/SKILL.md` or `CLAUDE.md`), resolve them by keeping your version for brand-specific content and taking upstream for new infrastructure.
+
+### Alternative: merge instead of rebase
+
+If you prefer a merge commit (simpler, but noisier history):
+
+```bash
+git fetch upstream
+git merge upstream/main
+```
+
+### What won't conflict
+
+These files are gitignored and live only on your machine, so they're never affected by upstream changes:
+- `.mcp.json` (your tokens)
+- `.claude/settings.local.json` (your AWS credentials)
+
+### Tip
+
+If upstream adds a new `.mcp.json.template` entry (e.g., a new MCP server), you'll see the change in the template file after syncing. Copy the new entry into your local `.mcp.json` and fill in your token.
