@@ -11,7 +11,12 @@ A forkable base for Claude Code productivity workspaces. Fork this repo, fill in
    - `YOUR_TAVILY_API_KEY_HERE` — [get a Tavily API key](https://tavily.com/)
    - Figma and Linear use browser-based OAuth (no tokens needed in config)
 4. **Set up Claude Code credentials** — copy `.claude/settings.local.json.example` to `.claude/settings.local.json` and fill in your AWS Bedrock credentials
-5. **Fetch the brand fonts** — run `.claude/skills/jupi-brand/fetch-fonts.sh` once. The fonts are licensed, so they are never committed; the script needs `gh` logged in with read access to the private repo it pulls from
+5. **Install the Jupi brand plugin** — opening this repo in Claude Code offers to install it (it is enabled in `.claude/settings.json`). To use it in any other project too:
+   ```
+   /plugin marketplace add jupi-co/shared
+   /plugin install jupi-brand@jupi
+   ```
+   Then fetch the licensed fonts once with the plugin's `fetch-fonts.sh`
 
 ## What's Included
 
@@ -30,16 +35,13 @@ A forkable base for Claude Code productivity workspaces. Fork this repo, fill in
 |---|---|
 | **document-skills** | Create and edit .docx, .pdf, .xlsx, .pptx files |
 | **skill-creator** | Create new Claude Code skills from scratch |
-
-### Skills
-
-| Skill | What it does |
-|---|---|
-| **jupi-brand** | Jupi's brand system, ready to use: colors and gradients, Fenul Standard and Roobert, logos as SVG, motion, voice and tone, Figma library overview, long-form article styling. Run `fetch-fonts.sh` once for the licensed fonts, then `embed-fonts.sh` to embed them in artifacts. |
+| **jupi-brand** (this repo) | Jupi's brand system, ready to use: colors and gradients, Fenul Standard and Roobert, logos as SVG, motion, voice and tone, Figma library overview, long-form article styling. Run `fetch-fonts.sh` once for the licensed fonts, then `embed-fonts.sh` to embed them in artifacts. |
 
 ## Adding Your Own Skills
 
-Create a new folder in `.claude/skills/` with a `SKILL.md` file:
+This repo is also a plugin marketplace (`.claude-plugin/marketplace.json`, plugins in `plugins/`). A skill the whole team should have anywhere goes in a plugin there: add it under `plugins/<plugin>/skills/`, list new plugins in `marketplace.json`, bump the plugin's `version` in its `plugin.json`, and check with `claude plugin validate .`.
+
+A skill only for this workspace goes in a folder in `.claude/skills/` with a `SKILL.md` file:
 
 ```
 .claude/skills/
@@ -66,7 +68,7 @@ You can also use the `/skill-creator` plugin to generate skills interactively.
 ## Customization
 
 ### Brand skill
-`.claude/skills/jupi-brand/` holds Jupi's brand system: `SKILL.md` (colors, typography, logos, motion, voice), `references/thought-leadership.md` (long-form article styling) and the logo SVGs in `assets/`. Brand changes go there, upstream, so every fork gets them.
+`plugins/jupi-brand/skills/jupi-brand/` holds Jupi's brand system: `SKILL.md` (colors, typography, logos, motion, voice), `references/thought-leadership.md` (long-form article styling) and the logo SVGs in `assets/`. Brand changes go there, upstream; bump `version` in `plugins/jupi-brand/.claude-plugin/plugin.json` so installed copies update.
 
 ### Adding MCP servers
 Add new entries to your `.mcp.json`. See [Claude Code MCP docs](https://docs.anthropic.com/en/docs/claude-code/mcp) for configuration options.

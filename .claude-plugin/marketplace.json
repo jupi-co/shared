@@ -1,0 +1,12 @@
+{
+  "name": "jupi",
+  "description": "Jupi's internal Claude Code plugins",
+  "owner": { "name": "Jupi" },
+  "plugins": [
+    {
+      "name": "jupi-brand",
+      "source": "./plugins/jupi-brand",
+      "description": "Jupi's brand system: colors, fonts, logos, motion, voice and tone, article styling"
+    }
+  ]
+}
