@@ -1,6 +1,6 @@
 # Shared Claude Code Workspace
 
-A forkable base for Claude Code productivity workspaces. Fork this repo, fill in your credentials and brand, and start working.
+A forkable base for Claude Code productivity workspaces. Fork this repo, fill in your credentials, and start working. Jupi's brand system comes ready to use.
 
 ## Quick Start
 
@@ -11,7 +11,7 @@ A forkable base for Claude Code productivity workspaces. Fork this repo, fill in
    - `YOUR_TAVILY_API_KEY_HERE` — [get a Tavily API key](https://tavily.com/)
    - Figma and Linear use browser-based OAuth (no tokens needed in config)
 4. **Set up Claude Code credentials** — copy `.claude/settings.local.json.example` to `.claude/settings.local.json` and fill in your AWS Bedrock credentials
-5. **Customize your brand** — edit `.claude/skills/company-brand/SKILL.md` with your colors, fonts, logos, and voice. Add brand assets to `assets/brand/`
+5. **Fetch the brand fonts** — run `.claude/skills/jupi-brand/fetch-fonts.sh` once. The fonts are licensed, so they are never committed; the script needs `gh` logged in with read access to the private repo it pulls from
 
 ## What's Included
 
@@ -35,7 +35,7 @@ A forkable base for Claude Code productivity workspaces. Fork this repo, fill in
 
 | Skill | What it does |
 |---|---|
-| **company-brand** | Template for your brand identity — colors, fonts, logos, voice, Figma library. Customize before use. |
+| **jupi-brand** | Jupi's brand system, ready to use: colors and gradients, Fenul Standard and Roobert, logos as SVG, motion, voice and tone, Figma library overview, long-form article styling. Run `fetch-fonts.sh` once for the licensed fonts, then `embed-fonts.sh` to embed them in artifacts. |
 
 ## Adding Your Own Skills
 
@@ -47,7 +47,7 @@ Create a new folder in `.claude/skills/` with a `SKILL.md` file:
     └── SKILL.md
 ```
 
-The `SKILL.md` file needs YAML frontmatter with `name` and `description` fields. The description tells Claude when to activate the skill. See the `company-brand` skill for an example.
+The `SKILL.md` file needs YAML frontmatter with `name` and `description` fields. The description tells Claude when to activate the skill. See the `jupi-brand` skill for an example.
 
 You can also use the `/skill-creator` plugin to generate skills interactively.
 
@@ -66,7 +66,7 @@ You can also use the `/skill-creator` plugin to generate skills interactively.
 ## Customization
 
 ### Brand skill
-Edit `.claude/skills/company-brand/SKILL.md` — it's a full scaffold with sections for colors, typography, logos, motion, voice & tone, and Figma library references. Replace all `[placeholder]` values with your real brand tokens.
+`.claude/skills/jupi-brand/` holds Jupi's brand system: `SKILL.md` (colors, typography, logos, motion, voice), `references/thought-leadership.md` (long-form article styling) and the logo SVGs in `assets/`. Brand changes go there, upstream, so every fork gets them.
 
 ### Adding MCP servers
 Add new entries to your `.mcp.json`. See [Claude Code MCP docs](https://docs.anthropic.com/en/docs/claude-code/mcp) for configuration options.
@@ -94,7 +94,7 @@ git fetch upstream
 git rebase upstream/main
 ```
 
-If you get conflicts (typically in files you've customized like `company-brand/SKILL.md` or `CLAUDE.md`), resolve them by keeping your version for brand-specific content and taking upstream for new infrastructure.
+If you get conflicts (typically in files you've customized like `CLAUDE.md`), resolve them by keeping your version for brand-specific content and taking upstream for new infrastructure.
 
 ### Alternative: merge instead of rebase
 
