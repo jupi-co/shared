@@ -36,6 +36,7 @@ A forkable base for Claude Code productivity workspaces. Fork this repo, fill in
 | Skill | What it does |
 |---|---|
 | **company-brand** | Template for your brand identity — colors, fonts, logos, voice, Figma library. Customize before use. |
+| **jupi-brand** | Jupi's brand system, ready to use: colors and gradients, Fenul Standard and Roobert, logos as SVG, motion, voice and tone, Figma library, long-form article styling. Run `.claude/skills/jupi-brand/fetch-fonts.sh` once to get the licensed fonts (needs access to `jupi-co/decide`). |
 
 ## Adding Your Own Skills
 

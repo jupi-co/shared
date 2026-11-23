@@ -16,6 +16,7 @@ This is a productivity workspace powered by Claude Code. It provides MCP integra
 
 ### Skills
 - `/company-brand` — apply brand identity to visual and written output (customize before use)
+- `/jupi-brand` — Jupi's brand system (colors, fonts, logos, voice). Fonts are fetched locally with `.claude/skills/jupi-brand/fetch-fonts.sh`, never committed
 
 ## Directory conventions
 - `assets/brand/` — logos, fonts, Lottie animations, and other brand assets

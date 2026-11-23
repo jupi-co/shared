@@ -17,3 +17,7 @@ __pycache__/
 *.pem
 *.key
 credentials.json
+
+# Licensed brand fonts: fetched locally with .claude/skills/jupi-brand/fetch-fonts.sh, never committed (public repo)
+.claude/skills/jupi-brand/assets/fonts/*
+!.claude/skills/jupi-brand/assets/fonts/.gitkeep
