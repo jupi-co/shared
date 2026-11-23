@@ -1,6 +1,15 @@
 {
   "enabledPlugins": {
     "skill-creator@claude-plugins-official": true,
-    "document-skills@anthropic-agent-skills": true
+    "document-skills@anthropic-agent-skills": true,
+    "jupi-brand@jupi": true
+  },
+  "extraKnownMarketplaces": {
+    "jupi": {
+      "source": {
+        "source": "github",
+        "repo": "jupi-co/shared"
+      }
+    }
   }
 }
